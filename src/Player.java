@@ -7,7 +7,9 @@ public class Player {
     private int P1DEF = 0;
     private int P1SPD = 0;
     private int P1HP = 0;
+    private int MaxHP;
     private int LEVEL = 1;
+    private boolean isDead = false;
 
     public Player(int num) throws InterruptedException {
         Scanner Scan = new Scanner(System.in);
@@ -27,49 +29,54 @@ public class Player {
             System.out.println("| 5: Mage          |");
             System.out.println("| 6: Learn more    |");
             System.out.println("--------------------");
-            int input = Scan.nextInt();
+            String input = Scan.nextLine();
 
-            if (input == 1) {
+            if (input.equals("1")) {
                 P1ATK = 3;
                 P1DEF = 2;
-                P1SPD = 1;
+                P1SPD = 2;
                 P1HP = 20;
+                MaxHP = 20;
                 Class = "F";
                 System.out.println(P1name + " is now a FIGHTER");
                 break;
-            } else if (input == 2) {
+            } else if (input.equals("2")) {
                 P1ATK = 2;
                 P1DEF = 3;
-                P1SPD = 0;
+                P1SPD = 1;
                 P1HP = 25;
+                MaxHP = 25;
                 Class = "T";
                 System.out.println(P1name + " is now a TANK");
                 break;
-            } else if (input == 3) {
+            } else if (input.equals("3")) {
                 P1ATK = 1;
                 P1DEF = 1;
-                P1SPD = 1;
+                P1SPD = 3;
                 P1HP = 15;
+                MaxHP = 15;
                 Class = "H";
                 System.out.println(P1name + " is now a HEALER");
                 break;
-            } else if (input == 4) {
+            } else if (input.equals("4")) {
                 P1ATK = 2;
                 P1DEF = 1;
-                P1SPD = 4;
-                P1HP = 20;
+                P1SPD = 2;
+                P1HP = 25;
+                MaxHP = 25;
                 Class = "N";
                 System.out.println(P1name + " is now a NINJA");
                 break;
-            } else if (input == 5) {
+            } else if (input.equals("5")) {
                 P1ATK = 4;
                 P1DEF = 1;
-                P1SPD = 1;
+                P1SPD = 2;
                 P1HP = 20;
+                MaxHP = 20;
                 Class = "M";
                 System.out.println(P1name + " is now a MAGE");
                 break;
-            } else if (input == 6) {
+            } else if (input.equals("6")) {
                 Thread.sleep(900);
                 System.out.println("|Fighter: A strong attacker           |");
                 System.out.println("|Tank: More defense, less attack      |");
@@ -84,15 +91,59 @@ public class Player {
         }
     }
 
-    public void Block(String n) {
-        int heal = Math.random()
+    public void Block(String n) throws InterruptedException {
+        Thread.sleep(900);
+        int heal = (int) ((Math.random() * 2 * P1SPD) + 1);
+        System.out.println(n + " blocks, healing " + heal + " HP!");
+        P1HP += heal;
 
+        if (P1HP > MaxHP) {
+            P1HP = MaxHP;
+        }
 
-        System.out.println(n + " blocks, healing ");
+        Thread.sleep(900);
+    }
+
+    public void takeDMG(int d) {
+        P1HP -= d;
+        if (P1HP <= 0) {
+            isDead = true;
+        }
+    }
+
+    public void levelUP() throws InterruptedException {
+        Thread.sleep(900);
+        LEVEL++;
+        System.out.println(P1name + " leveled up!");
+        P1ATK += 1;
+        P1DEF += 1;
+        P1SPD += 1;
+        P1HP += 2;
+        MaxHP += 2;
+        System.out.println();
+        Thread.sleep(900);
+        System.out.println("Level --> " + LEVEL);
+        System.out.println("Atk +1: " + P1ATK);
+        System.out.println("Def +1: " + P1DEF);
+        System.out.println("SP +1: " + P1SPD);
+        System.out.println("Hp +2: " + P1HP);
+        Thread.sleep(900);
+        System.out.println();
     }
 
     public int getATK() {
         return P1ATK;
+    }
+
+    public int Attack() {
+        if (Math.random() > 0.7) {
+            System.out.println("Critical Hit!");
+            return P1ATK * 2;
+        } else {
+
+            return P1ATK;
+        }
+
     }
 
     public int getSPD() {
@@ -117,6 +168,10 @@ public class Player {
 
     public int getLEVEL() {
         return LEVEL;
+    }
+
+    public boolean isDead() {
+        return isDead;
     }
 
 }

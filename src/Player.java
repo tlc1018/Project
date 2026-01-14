@@ -1,3 +1,4 @@
+import javax.naming.Name;
 import java.util.Scanner;
 
 public class Player {
@@ -104,6 +105,17 @@ public class Player {
         Thread.sleep(900);
     }
 
+    public void Heal(int amt) {
+        if (!isDead) {
+            System.out.println(P1name + " heals " + amt + " HP!");
+            P1HP += amt;
+            if (P1HP > MaxHP) {
+                P1HP = MaxHP;
+            }
+        }
+
+    }
+
     public void takeDMG(int d) {
         P1HP -= d;
         if (P1HP <= 0) {
@@ -118,15 +130,15 @@ public class Player {
         P1ATK += 1;
         P1DEF += 1;
         P1SPD += 1;
-        P1HP += 2;
         MaxHP += 2;
+        P1HP = MaxHP;
         System.out.println();
         Thread.sleep(900);
         System.out.println("Level --> " + LEVEL);
         System.out.println("Atk +1: " + P1ATK);
         System.out.println("Def +1: " + P1DEF);
         System.out.println("SP +1: " + P1SPD);
-        System.out.println("Hp +2: " + P1HP);
+        System.out.println("Hp +2: " + MaxHP);
         Thread.sleep(900);
         System.out.println();
     }
@@ -146,6 +158,13 @@ public class Player {
 
     }
 
+    public void Revive() throws InterruptedException {
+        Thread.sleep(900);
+        System.out.println(P1name + "has been revived!");
+        isDead = false;
+        P1HP = (int) (MaxHP / 2);
+    }
+
     public int getSPD() {
         return P1SPD;
     }
@@ -156,6 +175,9 @@ public class Player {
 
     public int getHP() {
         return P1HP;
+    }
+    public int getMAXHP() {
+        return MaxHP;
     }
 
     public String getNAME() {

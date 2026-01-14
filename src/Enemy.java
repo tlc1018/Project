@@ -10,55 +10,6 @@ public class Enemy {
     private int HP = 8;
 
     private int BASE = 2;
-    public Enemy(int L) {
-        int x = (int) ((Math.random() * 5) + 1);
-        if (x < 2) {
-            ATK = 0;
-            DEF = 0;
-            SPD = -1;
-            HP = 8;
-
-            name = "Zombie";
-            level = L;
-            ATK += L;
-            DEF += L;
-            SPD += L;
-            if (SPD >= 2) {
-                SPD = 1;
-            }
-            HP += (L*2);
-        } else if (x < 4) {
-            ATK = 1;
-            DEF = 0;
-            SPD = -1;
-            HP = 6;
-
-            name = "Skeleton";
-            level = L;
-            ATK += L;
-            DEF += L;
-            SPD += L;
-            if (SPD >= 2) {
-                SPD = 1;
-            }
-            HP += (L*2);
-        } else {
-            ATK = 4;
-            DEF = 2;
-            SPD = 1;
-            HP = 30;
-
-            name = Ogre;
-            level = L;
-            ATK += L;
-            DEF += L;
-            SPD += L;
-            if (SPD >= 2) {
-                SPD = 1;
-            }
-            HP += (L*2);
-        }
-    }
 
     public Enemy(int L, String n) {
 
@@ -111,6 +62,57 @@ public class Enemy {
         }
 
     }
+
+    public Enemy(int L) {
+        int x = (int) ((Math.random() * 5) + 1);
+        if (x < 2) {
+            ATK = 0;
+            DEF = 0;
+            SPD = -1;
+            HP = 8;
+
+            name = "Zombie";
+            level = L;
+            ATK += L;
+            DEF += L;
+            SPD += L;
+            if (SPD >= 2) {
+                SPD = 1;
+            }
+            HP += (L*2);
+        } else if (x < 4) {
+            ATK = 1;
+            DEF = 0;
+            SPD = -1;
+            HP = 6;
+
+            name = "Skeleton";
+            level = L;
+            ATK += L;
+            DEF += L;
+            SPD += L;
+            if (SPD >= 2) {
+                SPD = 1;
+            }
+            HP += (L*2);
+        } else {
+            ATK = 4;
+            DEF = 2;
+            SPD = 1;
+            HP = 30;
+
+            name = "Ogre";
+            level = L;
+            ATK += L;
+            DEF += L;
+            SPD += L;
+            if (SPD >= 2) {
+                SPD = 1;
+            }
+            HP += (L*2);
+        }
+    }
+
 
     public int DealDMG() {
         if (Math.random() > 0.7) {
@@ -165,15 +167,15 @@ public class Enemy {
             DMG = 1;
         }
         HP -= DMG;
-        System.out.println(n + " attacks Zombie!");
+        System.out.println(n + " attacks " + name + "!");
         Thread.sleep(900);
-        System.out.println("Zombie takes " + DMG + " Damage!");
+        System.out.println(name + " takes " + DMG + " Damage!");
         Thread.sleep(900);
         System.out.println("Leaving it with " + HP + " health left!");
         Thread.sleep(900);
 
         if (isDEAD()) {
-            System.out.println("Zombie has fallen!");
+            System.out.println(name + " has fallen!");
             Thread.sleep(900);
         }
     }

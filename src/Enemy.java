@@ -96,20 +96,55 @@ public class Enemy {
             }
             HP += (L*2);
         } else {
-            ATK = 4;
-            DEF = 2;
-            SPD = 1;
-            HP = 30;
-
-            name = "Ogre";
-            level = L;
-            ATK += L;
-            DEF += L;
-            SPD += L;
-            if (SPD >= 2) {
+            int y = (int) ((Math.random() * 5) + 1);
+            if (y < 2) {
+                ATK = 4;
+                DEF = 2;
                 SPD = 1;
+                HP = 30;
+
+                name = "Ogre";
+                level = L;
+                ATK += L;
+                DEF += L;
+                SPD += L;
+                if (SPD >= 2) {
+                    SPD = 1;
+                }
+                HP += (L*2);
+            } else if(y < 4) {
+                ATK = 6;
+                DEF = 2;
+                SPD = 1;
+                HP = 25;
+
+                name = "Ghoul";
+                level = L;
+                ATK += L;
+                DEF += L;
+                SPD += L;
+                if (SPD >= 2) {
+                    SPD = 1;
+                }
+                HP += (L*2);
+            } else {
+                ATK = 10;
+                DEF = 3;
+                SPD = 1;
+                HP = 50;
+
+                name = "DRAGON";
+                level = L;
+                ATK += L;
+                DEF += L;
+                SPD += L;
+                if (SPD >= 2) {
+                    SPD = 1;
+                }
+                HP += (L*2);
             }
-            HP += (L*2);
+
+
         }
     }
 
@@ -120,7 +155,7 @@ public class Enemy {
             return ATK * level * 2;
         } else {
 
-            return ATK * level;
+            return ATK;
         }
     }
 
@@ -162,17 +197,33 @@ public class Enemy {
     }
 
     public void takeDMG(int base, String n) throws InterruptedException {
-        int DMG = (base - DEF);
-        if (DMG <= 0) {
-            DMG = 1;
+        if (isDEAD()) {
+            int DMG = (base - ((int) (DEF / 2)));
+            if (DMG <= 0) {
+                DMG = 1;
+            }
+            HP -= DMG;
+            System.out.println(n + " attacks the corpse of " + name + "!");
+            Thread.sleep(900);
+            System.out.println(name + " takes " + DMG + " Damage!");
+            Thread.sleep(900);
+            System.out.println("Leaving it with " + HP + " health left!");
+            Thread.sleep(900);
+        } else {
+            int DMG = (base - ((int) (DEF / 2)));
+            if (DMG <= 0) {
+                DMG = 1;
+            }
+            HP -= DMG;
+            System.out.println(n + " attacks " + name + "!");
+            Thread.sleep(900);
+            System.out.println(name + " takes " + DMG + " Damage!");
+            Thread.sleep(900);
+            System.out.println("Leaving it with " + HP + " health left!");
+            System.out.println();
+            Thread.sleep(900);
         }
-        HP -= DMG;
-        System.out.println(n + " attacks " + name + "!");
-        Thread.sleep(900);
-        System.out.println(name + " takes " + DMG + " Damage!");
-        Thread.sleep(900);
-        System.out.println("Leaving it with " + HP + " health left!");
-        Thread.sleep(900);
+
 
         if (isDEAD()) {
             System.out.println(name + " has fallen!");
@@ -197,6 +248,10 @@ public class Enemy {
 
     public String getName() {
         return name;
+    }
+
+    public int getLevel() {
+        return level;
     }
 
 

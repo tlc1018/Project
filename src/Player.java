@@ -38,7 +38,7 @@ public class Player {
                 P1SPD = 2;
                 P1HP = 20;
                 MaxHP = 20;
-                Class = "F";
+                Class = "Fighter";
                 System.out.println(P1name + " is now a FIGHTER");
                 break;
             } else if (input.equals("2")) {
@@ -47,7 +47,7 @@ public class Player {
                 P1SPD = 1;
                 P1HP = 25;
                 MaxHP = 25;
-                Class = "T";
+                Class = "Tank";
                 System.out.println(P1name + " is now a TANK");
                 break;
             } else if (input.equals("3")) {
@@ -56,7 +56,7 @@ public class Player {
                 P1SPD = 3;
                 P1HP = 15;
                 MaxHP = 15;
-                Class = "H";
+                Class = "Healer";
                 System.out.println(P1name + " is now a HEALER");
                 break;
             } else if (input.equals("4")) {
@@ -65,7 +65,7 @@ public class Player {
                 P1SPD = 2;
                 P1HP = 25;
                 MaxHP = 25;
-                Class = "N";
+                Class = "Ninja";
                 System.out.println(P1name + " is now a NINJA");
                 break;
             } else if (input.equals("5")) {
@@ -74,7 +74,7 @@ public class Player {
                 P1SPD = 2;
                 P1HP = 20;
                 MaxHP = 20;
-                Class = "M";
+                Class = "Mage";
                 System.out.println(P1name + " is now a MAGE");
                 break;
             } else if (input.equals("6")) {
@@ -117,7 +117,11 @@ public class Player {
     }
 
     public void takeDMG(int d) {
-        P1HP -= d;
+        int DMG = d - (P1DEF/2);
+        if (DMG <= 0) {
+            DMG = 1;
+        }
+        P1HP -= DMG;
         if (P1HP <= 0) {
             isDead = true;
         }
@@ -131,7 +135,9 @@ public class Player {
         P1DEF += 1;
         P1SPD += 1;
         MaxHP += 2;
-        P1HP = MaxHP;
+        if (!isDead) {
+            P1HP = MaxHP;
+        }
         System.out.println();
         Thread.sleep(900);
         System.out.println("Level --> " + LEVEL);
@@ -160,7 +166,8 @@ public class Player {
 
     public void Revive() throws InterruptedException {
         Thread.sleep(900);
-        System.out.println(P1name + "has been revived!");
+        System.out.println(P1name + " has been revived!");
+        Thread.sleep(900);
         isDead = false;
         P1HP = (int) (MaxHP / 2);
     }

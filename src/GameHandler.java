@@ -2,12 +2,17 @@ import java.util.Scanner;
 
 public class GameHandler {
     Scanner scan = new Scanner(System.in);
+    Player p1;
+    Player p2;
+    Player p3;
 
-    public GameHandler() {
-
+    public GameHandler(Player pI, Player pII, Player pIII) {
+        p1 = pI;
+        p2 = pII;
+        p3 = pIII;
     }
 
-    public void HealerCheck(Player p1, Player p2, Player p3) throws InterruptedException {
+    public void HealerCheck() throws InterruptedException {
         if (p1.getC().equals("Healer") && !p1.isDead()) {
             System.out.println();
             System.out.println(p1.getNAME() + " heals all heroes!");
@@ -35,10 +40,10 @@ public class GameHandler {
         Thread.sleep(900);
     }
 
-    public void Angel(Player p1, Player p2, Player p3) throws InterruptedException {
+    public void Angel() throws InterruptedException {
 
         Thread.sleep(900);
-        PartyCheck(p1, p2, p3);
+        PartyCheck();
         boolean close = false;
 
         while (!close) {
@@ -92,10 +97,10 @@ public class GameHandler {
             }
         }
 
-        PartyCheck(p1, p2, p3);
+        PartyCheck();
     }
 
-    public void UNILevel(Player p1, Player p2, Player p3) throws InterruptedException {
+    public void UNILevel() throws InterruptedException {
         if (Math.random() > 0.9) {
             p1.levelUP();
         }
@@ -107,7 +112,7 @@ public class GameHandler {
         }
     }
 
-    public void PartyCheck(Player p1, Player p2, Player p3) {
+    public void PartyCheck() {
         System.out.println("---------PARTY-CONDITION---------");
         System.out.println(p1.getNAME() + " Level: " + p1.getLEVEL() + "(" + p1.getC() + ")");
         System.out.println("    ATK: " + p1.getATK());

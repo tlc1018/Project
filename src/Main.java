@@ -8,7 +8,7 @@ public class Main {
         Player p1 = new Player(1);
         Player p2 = new Player(2);
         Player p3 = new Player(3);
-        GameHandler W = new GameHandler();
+        GameHandler W = new GameHandler(p1, p2, p3);
 
         Thread.sleep(900);
         System.out.println();
@@ -60,7 +60,7 @@ public class Main {
                 System.out.println(p1.getNAME() + " now has " + p1.getHP() + " HP!");
                 System.out.println();
             } else if (input.equals("3")) {
-                W.PartyCheck(p1, p2, p3);
+                W.PartyCheck();
                 z.Check(p1.getNAME());
             } else {
 
@@ -78,7 +78,7 @@ public class Main {
                 System.out.println(p2.getNAME() + " now has " + p2.getHP() + " HP!");
                 System.out.println();
             } else if (input2.equals("3")) {
-                W.PartyCheck(p1, p2, p3);
+                W.PartyCheck();
                 z.Check(p2.getNAME());
             } else {
 
@@ -96,7 +96,7 @@ public class Main {
                 System.out.println(p3.getNAME() + " now has " + p3.getHP() + " HP!");
                 System.out.println();
             } else if (input3.equals("3")) {
-                W.PartyCheck(p1, p2, p3);
+                W.PartyCheck();
                 z.Check(p3.getNAME());
             } else {
 
@@ -171,7 +171,7 @@ public class Main {
                 System.out.println("    GAME  OVER    ");
                 System.out.println("------------------");
             }
-            W.HealerCheck(p1, p2, p3);
+            W.HealerCheck();
         }
 
         //level ups
@@ -183,7 +183,7 @@ public class Main {
 
         while (!(p1.isDead() && p2.isDead() && p3.isDead())) {
 
-            W.Angel(p1, p2, p3);
+            W.Angel();
 
             int choice = (int) ((Math.random() * 2) + 1);
 
@@ -231,7 +231,7 @@ public class Main {
                         System.out.println(p1.getNAME() + " now has " + p1.getHP() + " HP!");
                         System.out.println();
                     } else if (input.equals("3")) {
-                        W.PartyCheck(p1, p2, p3);
+                        W.PartyCheck();
                         e.Check(p1.getNAME());
                     } else {
 
@@ -249,7 +249,7 @@ public class Main {
                         System.out.println(p2.getNAME() + " now has " + p2.getHP() + " HP!");
                         System.out.println();
                     } else if (input2.equals("3")) {
-                        W.PartyCheck(p1, p2, p3);
+                        W.PartyCheck();
                         e.Check(p2.getNAME());
                     } else {
 
@@ -267,7 +267,7 @@ public class Main {
                         System.out.println(p3.getNAME() + " now has " + p3.getHP() + " HP!");
                         System.out.println();
                     } else if (input3.equals("3")) {
-                        W.PartyCheck(p1, p2, p3);
+                        W.PartyCheck();
                         e.Check(p3.getNAME());
                     } else {
 
@@ -343,9 +343,9 @@ public class Main {
                         System.out.println("------------------");
                         Thread.sleep(900);
                         System.out.println("------FINAL STATS------");
-                        W.PartyCheck(p1, p2, p3);
+                        W.PartyCheck();
                     }
-                    W.HealerCheck(p1, p2, p3);
+                    W.HealerCheck();
                 }
 
             } else if (choice == 2) {
@@ -409,7 +409,7 @@ public class Main {
                         System.out.println(p1.getNAME() + " now has " + p1.getHP() + " HP!");
                         System.out.println();
                     } else if (input.equals("3")) {
-                        W.PartyCheck(p1, p2, p3);
+                        W.PartyCheck();
                         e.Check(p1.getNAME());
                         e2.Check(p1.getNAME());
                     } else {
@@ -441,7 +441,7 @@ public class Main {
                         System.out.println(p2.getNAME() + " now has " + p2.getHP() + " HP!");
                         System.out.println();
                     } else if (input2.equals("3")) {
-                        W.PartyCheck(p1, p2, p3);
+                        W.PartyCheck();
                         e.Check(p2.getNAME());
                         e2.Check(p2.getNAME());
                     } else {
@@ -473,7 +473,7 @@ public class Main {
                         System.out.println(p3.getNAME() + " now has " + p3.getHP() + " HP!");
                         System.out.println();
                     } else if (input3.equals("3")) {
-                        W.PartyCheck(p1, p2, p3);
+                        W.PartyCheck();
                         e.Check(p3.getNAME());
                         e2.Check(p3.getNAME());
                     } else {
@@ -615,9 +615,9 @@ public class Main {
                         System.out.println("------------------");
                         Thread.sleep(900);
                         System.out.println("------FINAL STATS------");
-                        W.PartyCheck(p1, p2, p3);
+                        W.PartyCheck();
                     }
-                    W.HealerCheck(p1, p2, p3);
+                    W.HealerCheck();
                 }
 
             }
@@ -627,7 +627,7 @@ public class Main {
                 }
                 L++;
             }
-            W.UNILevel(p1, p2, p3);
+            W.UNILevel();
         }
     }
 }

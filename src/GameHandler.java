@@ -3,8 +3,6 @@ import java.util.Scanner;
 public class GameHandler {
     Scanner scan = new Scanner(System.in);
 
-
-
     public GameHandler() {
 
     }

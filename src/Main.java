@@ -1,11 +1,5 @@
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.Scanner;
 
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
@@ -188,7 +182,6 @@ public class Main {
         int L = 2;
 
         while (!(p1.isDead() && p2.isDead() && p3.isDead())) {
-
 
             W.Angel(p1, p2, p3);
 
@@ -627,9 +620,6 @@ public class Main {
                     W.HealerCheck(p1, p2, p3);
                 }
 
-
-            } else {
-
             }
             if (Math.random() > 0.2) {
                 if (Math.random() > 0.5) {
@@ -639,6 +629,5 @@ public class Main {
             }
             W.UNILevel(p1, p2, p3);
         }
-
     }
 }

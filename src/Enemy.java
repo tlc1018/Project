@@ -159,13 +159,6 @@ public class Enemy {
         }
     }
 
-    public void LowerATK() {
-        ATK -= 1;
-        if (ATK == 0) {
-            ATK = 1;
-            System.out.println("Zombies Attack is at its minimum!");
-        }
-    }
     public void Check(String n) throws InterruptedException {
         Thread.sleep(900);
         System.out.println(n + " checks enemy!");
@@ -178,22 +171,6 @@ public class Enemy {
         System.out.println("Level: " + level);
         System.out.println();
         Thread.sleep(900);
-    }
-
-    public void RaiseATK() {
-        ATK += 1;
-    }
-
-    public void LowerDEF() {
-        DEF -= 1;
-        if (DEF == 0) {
-            DEF = 1;
-            System.out.println("Zombies Defense is at its minimum!");
-        }
-    }
-
-    public void RaiseDEF() {
-        DEF += 1;
     }
 
     public void takeDMG(int base, String n) throws InterruptedException {
@@ -233,17 +210,6 @@ public class Enemy {
 
     public boolean isDEAD() {
         return HP <= 0;
-    }
-
-    public int getDEF() {
-        return DEF;
-    }
-    public int getSPD() {
-        return SPD;
-    }
-
-    public int getHP() {
-        return HP;
     }
 
     public String getName() {

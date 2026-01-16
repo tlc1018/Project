@@ -113,7 +113,6 @@ public class Player {
                 P1HP = MaxHP;
             }
         }
-
     }
 
     public void takeDMG(int d) {
@@ -161,7 +160,6 @@ public class Player {
 
             return P1ATK;
         }
-
     }
 
     public void Revive() throws InterruptedException {
